@@ -1,11 +1,11 @@
 import { Text, View } from 'react-native';
 
-function Home() {
+function Profile() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home</Text>
+      <Text>Profile</Text>
     </View>
   )
 }
 
-export default Home
+export default Profile

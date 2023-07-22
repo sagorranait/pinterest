@@ -1,11 +1,11 @@
 import { Text, View } from 'react-native';
 
-function Home() {
+function AddNew() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home</Text>
+      <Text>AddNew</Text>
     </View>
   )
 }
 
-export default Home
+export default AddNew
