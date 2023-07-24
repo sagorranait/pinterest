@@ -1,11 +1,23 @@
-import { Text, View } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
+import Pin from '../components/Pin';
 
-function Home() {
+export default Home = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home</Text>
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Pin/>
+        <Pin/>
+      </View>
+    </ScrollView>
   )
 }
 
-export default Home
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+    marginTop: 45,
+  },
+});

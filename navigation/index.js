@@ -1,16 +1,17 @@
-import Home from './screens/Home';
-import Likes from './screens/Likes';
-import AddNew from './screens/AddNew';
-import Profile from './screens/Profile';
-import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { COLORS } from './constants';
+
+import Home from '../screens/Home';
+import Likes from '../screens/Likes';
+import AddNew from '../screens/AddNew';
+import Profile from '../screens/Profile';
+import { COLORS } from '../constants';
+import { StyleSheet } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
+const Navigation = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -64,7 +65,7 @@ const Tabs = () => {
   )
 }
 
-export default Tabs;
+export default Navigation;
 
 const styles = StyleSheet.create({
   tabBarStyle: {

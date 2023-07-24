@@ -1,19 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Tabs from './Tabs';
+import Navigation from './navigation';
 
-export default function App() {
+export default App = () => {
   return (
     <>
-      <Tabs/>
+      <Navigation/>
       <StatusBar style="auto" />
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
