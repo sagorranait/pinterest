@@ -8,9 +8,11 @@ import {
 } from 'react-native';
 import { COLORS } from '../constants';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
 
 export default Pin = ({ data }) => {
-  const { title, image } = data;
+  const { id, title, image } = data;
+  const navigation = useNavigation();
   const [ratio, setRatio] = useState(1);
 
   useEffect(() => {
@@ -19,10 +21,14 @@ export default Pin = ({ data }) => {
     }
   }, [image]);
   
+  const goToSinglePin = () => { 
+   navigation.navigate('single-pin', { id });
+  }
+
   const onLikeHandler = () => {}
 
   return (
-    <View style={styles.pin}>
+    <Pressable onPress={goToSinglePin} style={styles.pin}>
       <View>
          <Image style={[styles.image, {aspectRatio: ratio}]} source={{ uri: image }} />
          <Pressable onPress={onLikeHandler} style={styles.heartBtn}>
@@ -30,7 +36,7 @@ export default Pin = ({ data }) => {
          </Pressable>
       </View>
       <Text style={styles.title} numberOfLines={2} >{title}</Text>
-    </View>
+    </Pressable>
   )
 }
 

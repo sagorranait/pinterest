@@ -1,20 +1,22 @@
+import { COLORS } from '../constants';
+import { StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Home from '../screens/Home';
 import Likes from '../screens/Likes';
 import AddNew from '../screens/AddNew';
 import Profile from '../screens/Profile';
-import { COLORS } from '../constants';
-import { StyleSheet } from 'react-native';
+import SinglePin from '../screens/SinglePin';
 
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const Navigation = () => {
+const BottomTabBar = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
+    <Tab.Navigator
         initialRouteName="home"
         screenOptions={()=>({
           tabBarShowLabel: false,
@@ -61,6 +63,17 @@ const Navigation = () => {
           }}
         />
       </Tab.Navigator>
+  );
+}
+
+const Navigation = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="bottomTab">
+        <Stack.Screen name="bottomTab" component={BottomTabBar} options={{ headerShown: false }} />
+        <Stack.Screen name="single-pin" component={SinglePin} options={{ headerShown: false }} />
+      </Stack.Navigator>
+      {/* Bottom Tab Navigation */}
     </NavigationContainer>
   )
 }
