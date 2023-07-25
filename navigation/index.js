@@ -17,7 +17,6 @@ const Navigation = () => {
       <Tab.Navigator
         initialRouteName="home"
         screenOptions={()=>({
-          headerShown: false,
           tabBarShowLabel: false,
           tabBarStyle: styles.tabBarStyle,
           tabBarActiveTintColor: COLORS.white,
@@ -28,6 +27,7 @@ const Navigation = () => {
           name="home" 
           component={Home} 
           options={{
+            headerShown: false,
             tabBarIcon: ({ color, size, focused }) => (
               <Icon name="home" color={color} size={size} style={focused && styles.tabBarIcon} />
             ),
@@ -69,15 +69,11 @@ export default Navigation;
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    position: 'absolute',
     borderTopWidth: 0,
-    bottom: 15,
-    right: 10,
-    left: 10,
     elevation: 0,
-    backgroundColor: COLORS.whiteTransparent,
+    backgroundColor: COLORS.white,
     borderRadius: 10,
-    height: 75,
+    height: 70,
   },
   tabBarIcon: { 
     backgroundColor: COLORS.primary, 
