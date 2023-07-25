@@ -19,6 +19,7 @@ const BottomTabBar = () => {
     <Tab.Navigator
         initialRouteName="home"
         screenOptions={()=>({
+          headerShown: false,
           tabBarShowLabel: false,
           tabBarStyle: styles.tabBarStyle,
           tabBarActiveTintColor: COLORS.white,
@@ -29,7 +30,6 @@ const BottomTabBar = () => {
           name="home" 
           component={Home} 
           options={{
-            headerShown: false,
             tabBarIcon: ({ color, size, focused }) => (
               <Icon name="home" color={color} size={size} style={focused && styles.tabBarIcon} />
             ),

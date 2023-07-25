@@ -1,32 +1,15 @@
-import { View, StyleSheet, ScrollView } from 'react-native';
-import Pin from '../components/Pin';
-import pins from '../assets/data/pins';
+import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import pins from '../assets/data/pins';
+import MasonryList from '../components/MasonryList';
 
 export default Home = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.column}>
-            { pins.filter((_, index)=> index % 2 === 0).map(pin => <Pin key={pin.id} data={pin}/>) }
-          </View>
-          <View style={styles.column}>
-            { pins.filter((_, index)=> index % 2 === 1).map(pin => <Pin key={pin.id} data={pin}/>) }
-          </View>
-        </View>
+        <MasonryList pins={pins}/>
       </ScrollView>
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    padding: 10,
-  },
-  column: {
-    flex: 1,
-  }
-});
