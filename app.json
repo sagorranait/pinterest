@@ -25,6 +25,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission" : "Need to access your photos library to pick the photo."
+        }
+      ]
+    ]
   }
 }

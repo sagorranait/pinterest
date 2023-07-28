@@ -1,10 +1,15 @@
-import { Text, View } from 'react-native';
+import pins from '../assets/data/pins';
+import { ScrollView } from 'react-native';
+import MasonryList from '../components/MasonryList';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function Likes() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Likes</Text>
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <MasonryList pins={pins}/>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 

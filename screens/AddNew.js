@@ -35,16 +35,7 @@ export default AddNew = () => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        {/* <View style={styles.btnArea}>
-          <Pressable style={styles.saveBtn} onPress={savePinHandler}>
-            <Text style={styles.btnText}>Save</Text>
-          </Pressable>
-        </View> */}
-        <CustomButton 
-          label='Create Pin'
-          outline={false}
-          position='flex-end'
-        />
+        <CustomButton label='Create Pin' outline={false} position='flex-end' />
         <View style={styles.formArea}>
           <View style={styles.imageArea}>
             <Icon name="image" color={COLORS.gray} size={100} />
@@ -54,6 +45,7 @@ export default AddNew = () => {
             label='Select An Image' 
             icon='upload-to-cloud'
             outline={true}
+            onPress={pickImageAsync}
             position='center'
           />
         </View>
@@ -64,30 +56,14 @@ export default AddNew = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
     padding: 20,
   },
-  // btnArea:{
-  //   alignItems: 'flex-end',
-  //   paddingVertical: 15,
-  // },
-  // saveBtn: {
-  //   borderRadius: 30,
-  //   paddingHorizontal: 20,
-  //   paddingVertical: 10,
-  //   backgroundColor: COLORS.primary,
-  // },
-  // btnText: {
-  //   fontSize: 18,
-  //   fontWeight: '600',
-  //   color: COLORS.white,
-  // },
   formArea: {
     
   },
   imageArea: {
     width: '100%',
-    minHeight: 320,
+    minHeight: 280,
     borderWidth: 1,
     borderRadius: 15,
     alignItems: 'center',
