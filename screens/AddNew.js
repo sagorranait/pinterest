@@ -45,13 +45,13 @@ export default AddNew = () => {
   };
 
   const inputHandler = (identifier, enteredText) => {
-    setPinData((currentText)=> {
-			return {
-        ...currentText,
-			  [identifier]: enteredText
-      }
-		});
-  }
+    setPinData((currentData) => {
+      return {
+        ...currentData,
+        [identifier]: enteredText
+      };
+    });
+  };
 
   const savePinHandler = () => {
 
@@ -86,16 +86,18 @@ export default AddNew = () => {
                   value={pinData.title}
                   style={styles.textInput}
                   placeholder='Give your pin a title.'
-                  onChange={inputHandler.bind(this, 'title')}
+                  onChangeText={inputHandler.bind(this, 'title')}
                 />
               </View>
               <View style={styles.input}>
                 <Text style={styles.inputTitle}>Description</Text>
                 <TextInput
-                  value={pinData.title}
-                  style={styles.textInput}
+                  multiline={true}
+                  numberOfLines={4}
+                  value={pinData.description}
+                  style={[styles.textInput, { textAlignVertical: 'top', }]}
                   placeholder='Tell everyone what your Pin about.'
-                  onChange={inputHandler.bind(this, 'title')}
+                  onChangeText={inputHandler.bind(this, 'description')}
                 />
               </View>
             </View>
