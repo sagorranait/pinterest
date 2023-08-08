@@ -15,6 +15,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const BottomTabBar = () => {
+
   return (
     <Tab.Navigator
         initialRouteName="home"
@@ -31,7 +32,12 @@ const BottomTabBar = () => {
           component={Home} 
           options={{
             tabBarIcon: ({ color, size, focused }) => (
-              <Icon name="home" color={color} size={size} style={focused && styles.tabBarIcon} />
+              <Icon 
+                name="home" 
+                color={color} 
+                size={size} 
+                style={focused && styles.tabBarIcon} 
+              />
             ),
           }}
         />
@@ -40,7 +46,12 @@ const BottomTabBar = () => {
           component={Likes} 
           options={{
             tabBarIcon: ({ color, size, focused }) => (
-              <Icon name="heart" color={color} size={size} style={focused && styles.tabBarIcon} />
+              <Icon 
+                name="heart" 
+                color={color} 
+                size={size} 
+                style={focused && styles.tabBarIcon} 
+              />
             ),
           }}
         />
@@ -49,7 +60,12 @@ const BottomTabBar = () => {
           component={AddNew} 
           options={{
             tabBarIcon: ({ color, size, focused }) => (
-              <Icon name="plus" color={color} size={size} style={focused && styles.tabBarIcon} />
+              <Icon 
+                name="plus" 
+                color={color} 
+                size={size} 
+                style={focused && styles.tabBarIcon} 
+              />
             ),
           }}
         />
@@ -58,7 +74,12 @@ const BottomTabBar = () => {
           component={Profile} 
           options={{
             tabBarIcon: ({ color, size, focused }) => (
-              <Icon name="user" color={color} size={size} style={focused && styles.tabBarIcon} />
+              <Icon 
+                name="user" 
+                color={color} 
+                size={size} 
+                style={focused && styles.tabBarIcon} 
+              />
             ),
           }}
         />
@@ -88,7 +109,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 70,
   },
-  tabBarIcon: { 
+  tabBarIcon: {
+    width: 50,
     backgroundColor: COLORS.primary, 
     padding: 12, 
     borderRadius: 50,

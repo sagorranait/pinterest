@@ -1,16 +1,21 @@
-import { View, StyleSheet } from 'react-native';
+import { 
+  View, 
+  StyleSheet, 
+  useWindowDimensions 
+} from 'react-native';
 import Pin from './Pin';
 
-
 export default MasonryList = ({ pins }) => {
+  const width = useWindowDimensions().width;
+  const numColumns = Math.ceil(width / 350);
+
   return (
     <View style={styles.container}>
-      <View style={styles.column}>
-        { pins.filter((_, index)=> index % 2 === 0).map(pin => <Pin key={pin.id} data={pin}/>) }
-      </View>
-      <View style={styles.column}>
-        { pins.filter((_, index)=> index % 2 === 1).map(pin => <Pin key={pin.id} data={pin}/>) }
-      </View>
+      {Array.from(Array(numColumns)).map((_, rowIndex)=>
+        <View key={rowIndex} style={styles.column}>
+          { pins.filter((_, index) => index % numColumns === rowIndex).map(pin => <Pin key={pin.id} data={pin}/>) }
+        </View>
+      )}
     </View>
   )
 }

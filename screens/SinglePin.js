@@ -6,6 +6,7 @@ import {
    Image, 
    Pressable,
    StyleSheet,
+   ScrollView
 } from 'react-native';
 
 import pins from '../assets/data/pins';
@@ -35,14 +36,16 @@ export default SinglePin = () => {
 
   return (
    <SafeAreaView style={styles.root}>
-      <StatusBar style='light'/>
-      <View style={styles.container}>
-         <Image style={[styles.image, {aspectRatio: ratio}]} source={{ uri: pin.image }} />
-         <Text style={styles.title}>{pin.title}</Text>
-      </View>
-      <Pressable onPress={goBackHandler} style={[styles.backBtn, { top: insets.top + 25 }]} >
-         <Icon name='leftcircleo' size={30} color={COLORS.white} />
-      </Pressable>
+      <ScrollView>
+         <StatusBar style='light'/>
+         <View style={styles.container}>
+            <Image style={[styles.image, {aspectRatio: ratio}]} source={{ uri: pin.image }} />
+            <Text style={styles.title}>{pin.title}</Text>
+         </View>
+         <Pressable onPress={goBackHandler} style={[styles.backBtn, { top: insets.top + 5 }]} >
+            <Icon name='leftcircleo' size={30} color={COLORS.white} />
+         </Pressable>
+      </ScrollView>
    </SafeAreaView>
   )
 }
