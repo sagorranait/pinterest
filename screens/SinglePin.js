@@ -7,6 +7,7 @@ import {
    Pressable,
    StyleSheet,
    Alert,
+   ScrollView,
 } from 'react-native';
 import { COLORS } from '../constants';
 import { useNhostClient } from '@nhost/react';
@@ -27,15 +28,15 @@ export default SinglePin = () => {
   
   const fetchPins = async () => {
    const response = await nhost.graphql.request(`
-     query PinById {
-         pins_by_pk(id: "${id}") {
+     query PinById ($id: uuid!) {
+         pins_by_pk(id: $id) {
             id
             title
             image
             description
          }
       }
-   `);
+   `, { id });
 
    if (response.error) {
      Alert.alert('Error Fetching Pins !!!');
@@ -62,14 +63,17 @@ export default SinglePin = () => {
 
   return (
    <SafeAreaView style={styles.root}>
-      <StatusBar style='light'/>
-      <View style={styles.container}>
-         <Image style={[styles.image, {aspectRatio: ratio}]} source={{ uri: pin?.image }} />
-         <Text style={styles.title}>{pin?.title}</Text>
-      </View>
-      <Pressable onPress={goBackHandler} style={[styles.backBtn, { top: insets.top + 25 }]} >
-         <Icon name='leftcircleo' size={30} color={COLORS.white} />
-      </Pressable>
+      <ScrollView>
+         <StatusBar style='light'/>
+         <View style={styles.container}>
+            <Image style={[styles.image, {aspectRatio: ratio}]} source={{ uri: pin?.image }} />
+            <Text style={styles.title}>{pin?.title}</Text>
+            <Text style={styles.description}>{pin?.description}</Text>
+         </View>
+         <Pressable onPress={goBackHandler} style={[styles.backBtn, { top: insets.top + 5 }]} >
+            <Icon name='leftcircleo' size={30} color={COLORS.white} />
+         </Pressable>
+      </ScrollView>
    </SafeAreaView>
   )
 }
@@ -96,6 +100,12 @@ const styles = StyleSheet.create({
       lineHeight: 35,
       fontWeight: '600',
       textAlign: 'center',
+   },
+   description: {
+      fontSize: 16,
+      lineHeight: 22,
+      textAlign: 'center',
+      marginBottom: 15,
    },
    backBtn: {
       position: 'absolute',
