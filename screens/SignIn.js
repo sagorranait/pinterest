@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TextInput, Image, useWindowDimensions } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../constants';
 import CustomButton from '../components/CustomButton';
 import SocialButtons from '../components/SocialButtons';
+import Logo from '../assets/logo.png';
 
 export default function SignIn() {
   const navigation = useNavigation();
+  const { height } = useWindowDimensions();
 
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,10 +29,18 @@ export default function SignIn() {
     console.warn("onPrivacyPressed");
   };
 
+  const onForgotPasswordPressed = () => {
+
+  }
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Create an account</Text>
+        <Image
+          source={Logo}
+          style={[styles.logo, { height: height * 0.3 }]}
+          resizeMode="contain"
+        />
 
         <TextInput
           value={email}
@@ -48,23 +57,12 @@ export default function SignIn() {
           style={styles.input}
         />
 
-        <CustomButton label="Register" onPress={onRegisterPressed} />
-
-        <Text style={styles.text}>
-          By registering, you confirm that you accept our{" "}
-          <Text style={styles.link} onPress={onTermsOfUsePressed}>
-            Terms of Use
-          </Text>{" "}
-          and{" "}
-          <Text style={styles.link} onPress={onPrivacyPressed}>
-            Privacy Policy
-          </Text>
-        </Text>
+        <CustomButton label="Sign In" onPress={onRegisterPressed} />
 
         <SocialButtons />
     
         <CustomButton
-          label="Have an account? Sign in"
+          label="Don't have an account? Create one"
           onPress={onSignInPress}
         />
       </View>
@@ -78,11 +76,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "black",
-    margin: 10,
+  logo: {
+    width: "70%",
+    maxWidth: 300,
+    maxHeight: 200,
   },
   text: {
     color: "gray",

@@ -14,9 +14,8 @@ const Navigation = () => {
       <Stack.Navigator initialRouteName="bottomTab">
         {/* <Stack.Screen name="bottomTab" component={BottomBar} options={{ headerShown: false }} />
         <Stack.Screen name="single-pin" component={SinglePin} options={{ headerShown: false }} /> */}
-        <Stack.Screen name="sign-up" component={SignUp} options={{ headerShown: false }} />
         <Stack.Screen name="sign-in" component={SignIn} options={{ headerShown: false }} />
-
+        <Stack.Screen name="sign-up" component={SignUp} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

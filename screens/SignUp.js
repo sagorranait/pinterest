@@ -1,19 +1,33 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TextInput, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
+import { useNhostClient } from '@nhost/react';
 import { COLORS } from '../constants';
 import CustomButton from '../components/CustomButton';
 import SocialButtons from '../components/SocialButtons';
 
 export default function SignUp() {
+  const nhost = useNhostClient();
   const navigation = useNavigation();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onRegisterPressed = () => {
-    console.warn("Sign up");
+  const onRegisterPressed = async () => {
+    const result = await nhost.auth.signUp({
+      email,
+      password,
+      options: {
+        displayName: name,
+      }
+    });
+
+    if (result.error) {
+      Alert.alert("Error Signing Up", result.error.message);
+    }
+
+    console.log(result);
   };
 
   const onSignInPress = () => {
